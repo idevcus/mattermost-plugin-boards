@@ -27,7 +27,7 @@ LDFLAGS += -X "github.com/mattermost/focalboard/server/model.Edition=plugin"
 GO ?= $(shell command -v go 2> /dev/null)
 NPM ?= $(shell command -v npm 2> /dev/null)
 CURL ?= $(shell command -v curl 2> /dev/null)
-MM_DEBUG ?=
+MM_DEBUG ?= true
 MANIFEST_FILE ?= plugin.json
 GOPATH ?= $(shell go env GOPATH)
 GO_TEST_FLAGS ?= -race
@@ -160,7 +160,8 @@ ifneq ($(HAS_WEBAPP),)
 	mkdir -p dist/$(PLUGIN_NAME)/webapp
 	cp -r webapp/dist dist/$(PLUGIN_NAME)/webapp/
 endif
-	cd dist && tar -cvzf $(BUNDLE_NAME) $(PLUGIN_NAME)
+# 	cd dist && tar -cvzf $(BUNDLE_NAME) $(PLUGIN_NAME)
+	cd dist/$(PLUGIN_NAME) && tar -cvzf ../$(BUNDLE_NAME) .
 
 	@echo plugin built at: dist/$(BUNDLE_NAME)
 
