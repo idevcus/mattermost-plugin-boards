@@ -159,14 +159,15 @@ func (a *API) handleSearchBoards(w http.ResponseWriter, r *http.Request) {
 	defer a.audit.LogRecord(audit.LevelRead, auditRec)
 	auditRec.AddMeta("teamID", teamID)
 
-	isGuest, err := a.userIsGuest(userID)
-	if err != nil {
-		a.errorResponse(w, r, err)
-		return
-	}
+	// isGuest, err := a.userIsGuest(userID)
+	// if err != nil {
+	// 	a.errorResponse(w, r, err)
+	// 	return
+	// }
 
 	// retrieve boards list
-	boards, err := a.app.SearchBoardsForUser(term, searchField, userID, !isGuest)
+	// boards, err := a.app.SearchBoardsForUser(term, searchField, userID, !isGuest)
+	boards, err := a.app.SearchBoardsForUser(term, searchField, userID, true)
 	if err != nil {
 		a.errorResponse(w, r, err)
 		return
@@ -313,14 +314,15 @@ func (a *API) handleSearchAllBoards(w http.ResponseWriter, r *http.Request) {
 	auditRec := a.makeAuditRecord(r, "searchAllBoards", audit.Fail)
 	defer a.audit.LogRecord(audit.LevelRead, auditRec)
 
-	isGuest, err := a.userIsGuest(userID)
-	if err != nil {
-		a.errorResponse(w, r, err)
-		return
-	}
+	// isGuest, err := a.userIsGuest(userID)
+	// if err != nil {
+	// 	a.errorResponse(w, r, err)
+	// 	return
+	// }
 
 	// retrieve boards list
-	boards, err := a.app.SearchBoardsForUser(term, model.BoardSearchFieldTitle, userID, !isGuest)
+	// boards, err := a.app.SearchBoardsForUser(term, model.BoardSearchFieldTitle, userID, !isGuest)
+	boards, err := a.app.SearchBoardsForUser(term, model.BoardSearchFieldTitle, userID, true)
 	if err != nil {
 		a.errorResponse(w, r, err)
 		return
