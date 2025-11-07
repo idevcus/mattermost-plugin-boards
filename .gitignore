@@ -56,3 +56,12 @@ server/**/*.coverage
 
 # notice
 .notice-work
+
+
+# Claude Code
+.clinerules
+.claude/
+claude_code_output/
+.claude_code/
+
+.analysis
