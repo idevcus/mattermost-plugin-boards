@@ -57,11 +57,15 @@ server/**/*.coverage
 # notice
 .notice-work
 
-
-# Claude Code
+# Claude
+.claude
 .clinerules
-.claude/
 claude_code_output/
 .claude_code/
+**/CLAUDE.local.md
+CLAUDE*.md
+
+# Cursor
+.cursorrules
 
 .analysis
